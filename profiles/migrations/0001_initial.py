@@ -1,10 +1,10 @@
-from profiles.models import Profile
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-from oc_lettings_site.models import Profile as OldProfile
 
 def copy_data(apps, schema_editor):
+    OldProfile = apps.get_model("oc_lettings_site", "Profile")
+    Profile = apps.get_model("profiles", "Profile")
     for old_profile in OldProfile.objects.all():
         new_profile = Profile(
             user=old_profile.user,
@@ -31,5 +31,7 @@ class Migration(migrations.Migration):
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='profile', to=settings.AUTH_USER_MODEL)),
             ],
         ),
+        migrations.RunPython(copy_data),
+
     ]
 
