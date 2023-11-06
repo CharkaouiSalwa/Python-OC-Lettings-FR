@@ -1,11 +1,11 @@
 import django.core.validators
 from django.db import migrations, models
-from django.db import migrations, models
 import django.db.models.deletion
 
 def copy_data(apps, schema_editor):
     # Copiez les données de l'ancienne base de données vers la nouvelle
-    OldAddress = apps.get_model("oc_lettings_site", "Address")
+    #OldAddress = apps.get_model("oc_lettings_site", "Address")
+    OldAddress = apps.get_model("lettings", "Address")
     Address = apps.get_model("lettings", "Address")
     for old_address in OldAddress.objects.all():
         new_address = Address(
@@ -18,7 +18,8 @@ def copy_data(apps, schema_editor):
         )
         new_address.save()
 
-    OldLetting = apps.get_model("oc_lettings_site", "Letting")
+    #OldLetting = apps.get_model("oc_lettings_site", "Letting")
+    OldLetting = apps.get_model("lettings", "Letting")
     Letting = apps.get_model("lettings", "Letting")
     for old_letting in OldLetting.objects.all():
         new_letting = Letting(

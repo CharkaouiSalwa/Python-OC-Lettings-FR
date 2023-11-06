@@ -3,7 +3,8 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 def copy_data(apps, schema_editor):
-    OldProfile = apps.get_model("oc_lettings_site", "Profile")
+    #OldProfile = apps.get_model("oc_lettings_site", "Profile")
+    OldProfile = apps.get_model("profiles", "Profile")
     Profile = apps.get_model("profiles", "Profile")
     for old_profile in OldProfile.objects.all():
         new_profile = Profile(
