@@ -1,3 +1,4 @@
+import logging
 import os
 
 from pathlib import Path
@@ -17,6 +18,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+
+class LoggingIntegration:
+    pass
+
+
+sentry_sdk.init(
+    dsn="https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568.ingest.sentry.io/4506179316875264",
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+    integrations=[LoggingIntegration(
+            level=logging.INFO,
+            event_level=logging.ERROR)])
+
+
 
 # Application definition
 
@@ -29,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'sentry_sdk',
 ]
 
 
