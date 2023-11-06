@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from lettings.models import Letting, Address
 
+
 class LettingsTestCase(TestCase):
     def setUp(self):
         # Créez des objets Address et Letting pour les tests

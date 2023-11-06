@@ -3,6 +3,7 @@ from django.urls import reverse
 from .models import Profile
 from django.contrib.auth.models import User
 
+
 class ProfilesViewTestCase(TestCase):
     def setUp(self):
         # Créez des données de test pour vos profils
