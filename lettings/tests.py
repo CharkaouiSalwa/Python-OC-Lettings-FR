@@ -21,19 +21,13 @@ class LettingsTestCase(TestCase):
     def test_index_view(self):
         url = reverse('lettings:index')
         response = self.client.get(url)
-
         # Vérifiez que la page renvoie un code de statut HTTP 200 (OK)
         self.assertEqual(response.status_code, 200)
-
-        # Vérifiez que le contenu de la réponse contient le titre de la location
         self.assertContains(response, self.letting.title)
 
     def test_letting_view(self):
         url = reverse('lettings:letting', args=[self.letting.id])
         response = self.client.get(url)
-
-        # Vérifiez que la page renvoie un code de statut HTTP 200 (OK)
         self.assertEqual(response.status_code, 200)
-
         # Vérifiez que le contenu de la réponse contient le titre de la location
         self.assertContains(response, self.letting.title)
