@@ -25,7 +25,9 @@ jobs:
           command: |
             source venv/bin/activate
             python manage.py test  
-  
+  environment:
+      SENTRY_SDN: $SENTRY_SDN
+      SECRET_KEY: $SECRET_KEY
 
 workflows:
   main:
