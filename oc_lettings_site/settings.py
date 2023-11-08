@@ -1,4 +1,5 @@
 import logging
+import env as env
 import os
 from pathlib import Path
 import sentry_sdk
@@ -20,8 +21,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 sentry_sdk.init(
-    dsn="https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568"
-        ".ingest.sentry.io/4506179316875264",
+    dsn=env('SENTRY_DSN'),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     integrations=[DjangoIntegration(), LoggingIntegration(
