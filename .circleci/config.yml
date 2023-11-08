@@ -13,7 +13,7 @@ jobs:
           name: Configure virtual environment
           command: |
             python3 -m venv env
-            source env/bin/activate
+            source venv/bin/activate
             pip install -r requirements.txt
       - run:
           name: Linting
