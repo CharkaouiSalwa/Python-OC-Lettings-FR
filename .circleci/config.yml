@@ -18,11 +18,12 @@ jobs:
       - run:
           name: Linting
           command: |
+            source venv/bin/activate
             flake8
       - run:
           name: Run tests
           command: |
-            source env/bin/activate
+            source venv/bin/activate
             python manage.py test   
 
 workflows:
