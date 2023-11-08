@@ -28,7 +28,6 @@ sentry_sdk.init(
     dsn=env('SENTRY_DSN'),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
-    send_default_pii=True,
     integrations=[DjangoIntegration(), LoggingIntegration(
             level=logging.INFO,
             event_level=logging.ERROR)]
