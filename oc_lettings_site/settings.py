@@ -25,7 +25,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 sentry_sdk.init(
-    dsn=env('SENTRY_SDN'),
+    dsn=env('SENTRY_DSN'),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     send_default_pii=True,

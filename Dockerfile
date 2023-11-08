@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # variables d'environnements
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV SENTRY_SDN $SENTRY_SDN
+ENV SENTRY_DSN $SENTRY_DSN
 ENV PORT 8080
 
 # Copiez le fichier requirements.txt dans le conteneur
