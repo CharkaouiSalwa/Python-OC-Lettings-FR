@@ -24,7 +24,7 @@ jobs:
           name: Run tests
           command: |
             source env/bin/activate
-            python manage.py test
+            python manage.py test   
 
 workflows:
   main:

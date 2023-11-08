@@ -1,11 +1,12 @@
 import logging
 import os
-
 from pathlib import Path
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -18,13 +19,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.logging import LoggingIntegration
-
-
 sentry_sdk.init(
-    dsn="https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568.ingest.sentry.io/4506179316875264",
+    dsn="https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568"
+        ".ingest.sentry.io/4506179316875264",
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     integrations=[DjangoIntegration(), LoggingIntegration(
