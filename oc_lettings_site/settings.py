@@ -25,7 +25,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 sentry_sdk.init(
-    dsn=env('SENTRY_DSN'),
+    dsn=env('SENTRY_SDK'),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     integrations=[DjangoIntegration(), LoggingIntegration(
