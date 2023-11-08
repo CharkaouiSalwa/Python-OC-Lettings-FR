@@ -1,24 +1,32 @@
 # CircleCI configuration file
+
 version: 2.1
+description: "Orange County Lettings"
 
 jobs:
-  # Job one with a unique name
-  say_hello:
+  build_and_test:
     docker:
-     - image: cimg/base:2022.05
+      - image: cimg/python:3.9
     steps:
-      - run: echo "Say hello to YAML!"
-  # Job two with a unique name
-  say_goodbye:
-    docker:
-     - image: cimg/base:2022.05
-    steps:
-      - run: echo "Say goodbye to YAML!"
+      - checkout
+      - run:
+          name: Configure virtual environment
+          command: |
+            python3 -m venv env
+            source env/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: Linting
+          command: |
+            source env/bin/activate
+            flake8
+      - run:
+          name: Run tests
+          command: |
+            source env/bin/activate
+            python manage.py test
 
 workflows:
-  # Name of workflow
-  hello_and_goodbye:
-    # List of jobs that will run
+  main:
     jobs:
-      - say_hello
-      - say_goodbye
+      - build_and_test
