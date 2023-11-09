@@ -26,16 +26,20 @@ jobs:
             source venv/bin/activate
             python manage.py test
   containerize:
-    machine: true
+    docker:
+      - image: cimg/python:3.9
     steps:
       - checkout
+      - setup_remote_docker
       - run:
-          name: Containerize
+          name: "containerize"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             docker build -t image_oc_lettings_site .
-            docker tag image_oc_lettings_site $DOCKER_USERNAME/$PROJECT_NAME:$CIRCLE_SHA1
-            docker push $DOCKER_USERNAME/$PROJECT_NAME:$CIRCLE_SHA1
+            docker tag image_oc_lettings_site $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
+            docker push $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
+
+
 workflows:
   main:
     jobs:

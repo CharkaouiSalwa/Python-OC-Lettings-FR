@@ -4,7 +4,6 @@ FROM python:3.9-alpine
 # configuration du répertoire de travail
 WORKDIR /usr/src/app
 
-
 # variables d'environnements
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
