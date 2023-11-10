@@ -38,6 +38,8 @@ jobs:
             docker build -t image_oc_lettings_site .
             docker tag image_oc_lettings_site $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
             docker push $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
+            docker push $DOCKER_USERNAME/$DOCKER_REPO:latest
+
 
 
 workflows:
