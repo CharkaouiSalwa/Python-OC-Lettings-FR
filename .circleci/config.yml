@@ -35,9 +35,10 @@ jobs:
           name: "containerize"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker build --load -t image_oc_lettings_site .
+            docker build -t image_oc_lettings_site .
             docker tag image_oc_lettings_site $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
             docker push $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1
+            docker image tag $DOCKER_USERNAME/$DOCKER_REPO:$CIRCLE_SHA1 $DOCKER_USERNAME/$DOCKER_REPO:latest
             docker push $DOCKER_USERNAME/$DOCKER_REPO:latest
 
 
