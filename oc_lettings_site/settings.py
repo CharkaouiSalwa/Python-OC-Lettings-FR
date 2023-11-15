@@ -5,7 +5,6 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 import environ
-from django.core.management.utils import get_random_secret_key
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -15,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY', default=get_random_secret_key())
+SECRET_KEY = env('SECRET_KEY', default='')
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 sentry_sdk.init(
-    dsn=env('SENTRY_DSN'),
+    dsn=env('SENTRY_DSN', default=''),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     integrations=[DjangoIntegration(), LoggingIntegration(
