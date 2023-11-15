@@ -103,13 +103,13 @@ Création des variables d'environnement au niveau du projet :
 - Cliquez sur `Environment Variables`  
 - Cliquez sur `Add Environment Variables`  
 
-| Nom des Variables | Valeurs                                                                            |  
-|-------------------|------------------------------------------------------------------------------------------------|  
-| SECRET_KEY        | 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'                                           |  
-| DOCKER_PASSWORD   | `Salwa-Pass-1994`                                                                              |  
-| DOCKER_USERNAME   | `salwacharkaoui`                                                                               |  
-| SENTRY_DSN        | `https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568.ingest.sentry.io/4506179316875264` |  
-| DOCKER_REPO       | `myapp`                                                                                        |
+| Nom des Variables | Valeurs                                                                           |  
+|-------------------|-----------------------------------------------------------------------------------------------|  
+| SECRET_KEY        | ''                                           |  
+| DOCKER_PASSWORD   | ``                                                                             |  
+| DOCKER_USERNAME   | `salwacharkaoui`                                                                              |  
+| SENTRY_DSN        | `` |  
+| DOCKER_REPO       | `myapp`                                                                                       |
 ---
 ## Docker Hub :
 
