@@ -74,3 +74,48 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+---
+## Déploiement
+
+### Description du fonctionnement du Pipeline CircleCi
+
+#### Commit sur n'importe quelle branche autre que la master :
+- Lancement du job :
+    - build-and-test: 
+      - créer le build, lance le linter et effectue les tests
+      - 
+#### Commit sur la branche master :
+   
+- Lancement des jobs :
+     - build-and-test
+     - si ok, lancement du job containerize :
+        - Cela va créer une image docker et l'uploader sur le docker hub.
+## CircleCi :
+
+[https://app.circleci.com/pipelines/github/CharkaouiSalwa](https://app.circleci.com/pipelines/github/CharkaouiSalwa)
+
+
+Création des variables d'environnement au niveau du projet :
+
+- Dans **Projets**:
+- Cliquez sur `Project Settings`  (Les 3 petits points)
+- Cliquez sur `Environment Variables`  
+- Cliquez sur `Add Environment Variables`  
+
+| Nom des Variables | Valeurs                                                                            |  
+|-------------------|------------------------------------------------------------------------------------------------|  
+| SECRET_KEY        | 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'                                           |  
+| DOCKER_PASSWORD   | `Salwa-Pass-1994`                                                                              |  
+| DOCKER_USERNAME   | `salwacharkaoui`                                                                               |  
+| SENTRY_DSN        | `https://ec3f44c42aca39c986d142dcdb4d5372@o4506071063789568.ingest.sentry.io/4506179316875264` |  
+| DOCKER_REPO       | `myapp`                                                                                        |
+---
+## Docker Hub :
+
+- Télécharger et installer [Docker](https://docs.docker.com/get-docker/)
+- Se rendre dans le répertoire du projet `cd /path/to/Python-OC-Lettings-FR`
+- Créer l'image `docker build -t <image-name> .` 
+- Lancer le conteneur `docker run -d -p 8080:8080 <image-name>`
+- Lancer un navigateur avec l'adresse http://127.0.0.1:8080/
+---
