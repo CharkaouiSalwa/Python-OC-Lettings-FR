@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 DEBUG = env('DEBUG')
-SECRET_KEY ='fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s')
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 sentry_sdk.init(
-    dsn=env('SENTRY_DSN', default=''),
+    dsn=os.environ.get('SENTRY_DSN'),
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
     integrations=[DjangoIntegration(), LoggingIntegration(
